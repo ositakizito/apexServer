@@ -77,7 +77,7 @@ app.post('/api/auth/signup', async (req, res) => {
       const userId = result.insertId; // Get the newly inserted user's ID
 
       // Generate JWT token
-      const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '48h' });
 
       // Respond with token and success message
       res.status(201).json({ message: 'User registered successfully', token });
@@ -107,7 +107,7 @@ app.post('/api/auth/login', async (req, res) => {
   }
 
     // Generate a JWT token
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '48h' });
 
     // Send the token and user role back to the client
     res.json({ message: 'Login successful', token, role: user.role }); // Include user role in the response
@@ -185,7 +185,7 @@ app.post('/api/auth/admin-signup', async (req, res) => {
       const userId = result.insertId; // Get the newly inserted admin's ID
 
       // Generate JWT token
-      const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '48h' });
 
       // Respond with token and success message
       res.status(201).json({ message: 'Admin registered successfully', token });
